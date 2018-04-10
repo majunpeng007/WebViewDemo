@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WebViewDemo</title>
+        <script>
+            function callJS(){
+                alert("Android调用啦JS的callJS方法");
+            }
+
+            function callAndroid(){
+                <!--由于对象映射，所以调用test对象等于调用Android映射的对象-->
+                test.hello("js调用了android中的hello方法");
+            }
+
+            function callAndroid1(){
+                document.location = "js://webview?arg1=111&arg2=222"
+            }
+
+            function clickprompt(){
+               var result = prompt("js://demo?arg1=111&arg2=222");
+               alert("demo" + result);
+            }
+
+            <!--function myFunction(){-->
+                <!--document.getElementById("demo").innerHTML = "My First JavaScript Function";-->
+            <!--}-->
+        </script>
+    </head>
+
+    <body>
+        <p>javascript 能够直接写入HTML，输出流中</p>
+        <script>
+            document.write("<h1>this is a heading</h1>")
+            document.write("<p>this is a paragraph</p>")
+        </script>
+
+        <p>您只能再HTML输出流中使用document.write.如果您在文档已加载后使用它（比如在函数中），会覆盖整个文档</p>
+
+
+        <h1>My Web Page</h1>
+        <p id="demo">A Paragraph</p>
+
+        <button type="button" onclick="myFunction()">Try it</button>
+
+
+        <script type="text/javascript" src="myScript.js"></script>
+
+        <!--点击按钮则调用callAndroid函数-->
+        <button type="button" id="button1" onclick="callAndroid()">映射方法</button>
+        <button type="button" id="button2" onclick="callAndroid1()">拦截url</button>
+        <button type="button" id="button3" onclick="clickprompt()">prompt</button>
+    </body>
+
+</html>
